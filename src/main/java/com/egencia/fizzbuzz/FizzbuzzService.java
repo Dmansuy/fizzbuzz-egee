@@ -1,34 +1,44 @@
 package com.egencia.fizzbuzz;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
-public class FizzbuzzService {
-    public List<Integer> generate(int myNumber) {
+import static java.util.stream.Collectors.joining;
 
-        for (int i = 1; i < myNumber; i++) {
+public class FizzbuzzService {
+    public List<String> generate(int goal) {
+
+        List<String> result = new ArrayList<>();
+        for (int i = 1; i < goal; i++) {
 
             if (i % 3 == 0 && i % 5 == 0) {
-                System.out.print(" FizzBuzz ");
+                result.add("FizzBuzz");
             } else {
                 if (i % 3 == 0 || i % 5 == 0) {
                     if (i % 3 == 0) {
-                        System.out.print(" Fizz ");
+                        result.add("Fizz");
                     }
                     if (i % 5 == 0) {
-                        System.out.print(" Buzz ");
+                        result.add("Buzz");
                     }
                 } else {
-                    System.out.print(" " + i + " ");
+                    String number = String.valueOf(i);
+                    result.add(number);
                 }
             }
         }
-        return Collections.emptyList();
+        return result;
     }
 
     public static void main(String[] args) {
         FizzbuzzService fizzbuzzService = new FizzbuzzService();
 
-        System.out.println(fizzbuzzService.generate(17));
+        //System.out.println(fizzbuzzService.generate(17));
+        List<String> result = fizzbuzzService.generate(17);
+
+        String collect = result.stream()
+                .collect(joining(" "));
+
+        System.out.println(collect);
     }
 }
