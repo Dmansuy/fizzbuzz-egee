@@ -1,24 +1,25 @@
-package com.egencia.fizzbuzz
+package com.egencia.fizzbuzz;
 
-import java.util.ArrayList
+import java.util.ArrayList;
+import java.util.List;
 
-class FizzBuzzService {
+public class FizzBuzzService {
 
-    fun generate(goal: Int): List<String> {
+    public List<String> generate(int goal) {
 
-        val result = ArrayList<String>()
+        List<String> result = new ArrayList<>();
 
-        for (i in 1 until goal) {
+        for (int i = 1; i < goal; i++) {
             if (i % 3 == 0 && i % 5 == 0) {
-                result.add("FizzBuzz")
+                result.add("FizzBuzz");
             } else if (i % 3 == 0) {
-                result.add("Fizz")
+                result.add("Fizz");
             } else if (i % 5 == 0) {
-                result.add("Buzz")
+                result.add("Buzz");
             } else {
-                result.add(i.toString())
+                result.add(String.valueOf(i));
             }
         }
-        return result
+        return result;
     }
 }
