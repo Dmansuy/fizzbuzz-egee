@@ -6,37 +6,28 @@ import java.util.List;
 public class FizzbuzzService {
 
     public String generate(int goal) {
-
-        String result;
-        boolean isDividibleByThree = goal % 3 == 0;
+        boolean isDivisibleByThree = goal % 3 == 0;
         boolean isDivisibleByFive = goal % 5 == 0;
 
         if (goal <= 0) {
-            result = "";
-        } else {
-            if (isDividibleByThree && isDivisibleByFive) {
-                result = "Fizzbuzz";
-            } else if (isDivisibleByFive) {
-                result = "Buzz";
-            } else if (isDividibleByThree) {
-                result = "Fizz";
-            } else {
-                result = String.valueOf(goal);
-            }
+            return "";
         }
-
-        return result;
+        if (isDivisibleByThree && isDivisibleByFive) {
+            return "Fizzbuzz";
+        }
+        if (isDivisibleByFive) {
+            return "Buzz";
+        } else if (isDivisibleByThree) {
+            return "Fizz";
+        }
+        return String.valueOf(goal);
     }
 
-    public List<String> putInListTheResultOfGenerateFunction(int number) {
-
-        FizzbuzzService fizzbuzzService = new FizzbuzzService();
-        List<String> listOfFizzbuzz = new ArrayList<>();
-
-        for (int i = 1; i < number; i++) {
-            String result = fizzbuzzService.generate(i);
-            listOfFizzbuzz.add(result);
+    public List<String> generateList(int number) {
+        List<String> result = new ArrayList<>();
+        for (int i = 1; i <= number; i++) {
+            result.add(generate(i));
         }
-        return listOfFizzbuzz;
+        return result;
     }
 }

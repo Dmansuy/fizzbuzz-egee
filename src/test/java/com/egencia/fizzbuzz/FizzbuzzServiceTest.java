@@ -54,4 +54,11 @@ public class FizzbuzzServiceTest {
         assertThat(fizzbuzzService.generate(15)).isEqualTo("Fizzbuzz");
         assertThat(fizzbuzzService.generate(30)).isEqualTo("Fizzbuzz");
     }
+
+    @Test
+    public void should_return_a_fizzbuzz_list() {
+        assertThat(fizzbuzzService.generateList(4)).containsExactly("1", "2", "Fizz", "4");
+        assertThat(fizzbuzzService.generateList(17)).containsExactly("1", "2", "Fizz", "4", "Buzz", "Fizz", "7",
+                "8", "Fizz", "Buzz", "11", "Fizz", "13", "14", "Fizzbuzz", "16", "17");
+    }
 }
